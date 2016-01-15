@@ -12,6 +12,7 @@
 " STATUS statusline
 " QUIT
 " ERROR error_message
+" NICK nickname
 "
 " And it will respond to all of the following:
 "
@@ -24,7 +25,6 @@ augroup IrcGroup
     autocmd BufLeave ~/.ircnvim/*/*         if !exists('b:irc_input_buffer') | call IrcUpdateBuffer() | endif
     autocmd TabEnter ~/.ircnvim/*/server    execute "normal! \<C-w>j"
     autocmd TabEnter ~/.ircnvim/*/channel_* execute "normal! \<C-w>j"
-    autocmd TabEnter ~/.ircnvim/*_input     call IrcUpdateBuffer()
 augroup END
 
 function! s:GotoRoom(room)
@@ -36,6 +36,7 @@ function! s:GotoRoom(room)
     silent! setlocal nonumber
     silent! setlocal norelativenumber
     silent! setlocal autoread
+    let g:irc_nick = t:irc_nick
     silent! setlocal syn=irc
     silent! setlocal linebreak
     silent! setlocal breakindent
@@ -70,7 +71,6 @@ function! s:GotoRoom(room)
     ino <buffer> <silent> <S-Left> <C-o>:call<Space>IrcRoomPrevious()<CR>
     ino <buffer> <silent> <S-Right> <C-o>:call<Space>IrcRoomNext()<CR>
     resize 1
-
     redraw!
 endfunction
 
@@ -111,6 +111,8 @@ function! s:HandleMessage(msg)
         call s:UpdateBuffer()
     elseif match(a:msg, "^STATUS ") != -1
         call s:UpdateStatus(strpart(a:msg, 7))
+    elseif match(a:msg, "^NICK ") != -1
+        let t:irc_nick = strpart(a:msg, 5)
     elseif match(a:msg, "^ERROR ") != -1
         let t:irc_error_msg = strpart(a:msg, 6)
     elseif match(a:msg, "^QUIT$") != -1
@@ -145,8 +147,9 @@ function! IrcUpdateBuffer()
         silent! execute "read! tail -n +" . n . " %"
     else
         silent! edit!
-        silent! setlocal syn=irc
     endif
+    let g:irc_nick = t:irc_nick
+    silent! setlocal syn=irc
     silent! normal! G0
 endfunction
 
@@ -172,6 +175,7 @@ function! IRC(...)
     setlocal splitbelow
     exe "normal! \<C-w>n"
     let t:irc_status = 'Connecting...'
+    let t:irc_nick = ''
     if exists('a:1')
         let t:irc_job = jobstart(['/usr/bin/env', 'ircnvim', a:1], s:callbacks)
     else
