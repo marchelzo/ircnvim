@@ -2,7 +2,7 @@
 
 ##### Neovim as an IRC client
 
-##### Note: To use this plugin, you need to install https:/github.com/marchelzo/ircnvim-rs
+##### Note: To use this plugin, you need to install [ircnvim-rs](https:/github.com/marchelzo/ircnvim-rs)
 
 ##### Installation
 
@@ -10,8 +10,9 @@ After installing ircnvim-rs, just install this plugin as you would any other plu
 
 ##### Usage
 
-The `:IRC [profile]` will start an IRC client instance in the current window. The `profile`
-corresponds to a profile defined in the configuration file (`$HOME/.ircnvim/config`).
+The `:IRC [profile]` command will start an IRC client instance in the current window.
+The optional `profile` argument corresponds to a profile defined in the configuration
+file (`$HOME/.ircnvim/config`).
 
 Currently, the plugin remaps keys (I know this is probably undesirable; it will likely
 change soon).
