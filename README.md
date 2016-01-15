@@ -1,14 +1,14 @@
-### ircnvim
+## ircnvim
 
-##### Neovim as an IRC client
+### Neovim as an IRC client
 
 ##### Note: To use this plugin, you need to install [ircnvim-rs](https:/github.com/marchelzo/ircnvim-rs)
 
-##### Installation
+#### Installation
 
 After installing ircnvim-rs, just install this plugin as you would any other plugin.
 
-##### Usage
+#### Usage
 
 The `:IRC [profile]` command will start an IRC client instance in the current window.
 The optional `profile` argument corresponds to a profile defined in the configuration
@@ -23,15 +23,15 @@ change soon).
 
 Supported commands are:
 
-    - `/j` or `/join` (`/j #chan1 #chan2 #chan3`)
-    - `/p` or `/part` (`/part` or `/part goodbye`)
-    - `/nick`         (`/nick new_nick`)
-    - `/msg`          (`/msg target hi, foo bar baz`)
-    - `/quit`         (`/quit` or `/quit goodbye`)
-    - `/raw`          (`/raw PRIVMSG ##c :hello there`)
+    - /j or /join (/j #chan1 #chan2 #chan3)
+    - /p or /part (/part or /part goodbye)
+    - /nick         (/nick new_nick)
+    - /msg          (/msg target hi, foo bar baz)
+    - /quit         (/quit or /quit goodbye)
+    - /raw          (/raw PRIVMSG ##c :hello there)
 
 
-##### Warning
+#### Warning
 
 This is still very much a work in progress, and is likely going to be extremely buggy.
 If you do take the time to try it out, any feedback (issues, PRs, etc.) would be very
