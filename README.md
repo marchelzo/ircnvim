@@ -2,7 +2,7 @@
 
 ### Neovim as an IRC client
 
-##### Note: To use this plugin, you need to install [ircnvim-rs](https:/github.com/marchelzo/ircnvim-rs)
+##### Note: To use this plugin, you need to install [ircnvim-rs](https://github.com/marchelzo/ircnvim-rs)
 
 #### Installation
 
