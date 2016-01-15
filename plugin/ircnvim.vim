@@ -101,7 +101,7 @@ function! s:Quit()
         echohl ErrorMsg
         echo t:irc_error_msg . ' (press any key)'
         echohl None
-        getchar()
+        call getchar()
     endif
 endfunction
 
