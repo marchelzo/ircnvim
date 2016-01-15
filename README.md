@@ -4,6 +4,8 @@
 
 ##### Note: To use this plugin, you need to install [ircnvim-rs](https:/github.com/marchelzo/ircnvim-rs)
 
+[![Neovim as an IRC Client](http://img.youtube.com/vi/pwaMGGPL_nA/0.jpg)](http://www.youtube.com/watch?v=pwaMGGPL_nA)
+
 #### Installation
 
 After installing ircnvim-rs, just install this plugin as you would any other plugin.
