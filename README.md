@@ -23,8 +23,8 @@ change soon).
 
 Supported commands are:
 
-    - /j or /join (/j #chan1 #chan2 #chan3)
-    - /p or /part (/part or /part goodbye)
+    - /j or /join   (/j #chan1 #chan2 #chan3)
+    - /p or /part   (/part or /part goodbye)
     - /nick         (/nick new_nick)
     - /msg          (/msg target hi, foo bar baz)
     - /quit         (/quit or /quit goodbye)
