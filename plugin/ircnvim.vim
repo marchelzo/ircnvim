@@ -25,7 +25,7 @@ augroup IrcGroup
     autocmd BufLeave ~/.ircnvim/*/*         if !exists('b:irc_input_buffer') | call IrcUpdateBuffer() | endif
     autocmd TabEnter ~/.ircnvim/*/server    execute "normal! G\<C-w>j"
     autocmd TabEnter ~/.ircnvim/*/channel_* execute "normal! G\<C-w>j"
-    autocmd TabEnter ~/.ircnvim/*/*_input   call s:UpdateBuffer()
+    autocmd TabEnter ~/.ircnvim/*/*_input   if exists('t:irc_nick') | execute "silent! normal! \<C-w>k:call\<Space>IrcUpdateBuffer()\<CR>\<C-w>j:resize\<Space>1\<CR>" | endif
 augroup END
 
 function! s:GotoRoom(room)
