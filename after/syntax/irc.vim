@@ -18,10 +18,10 @@ endif
 syn match IrcTimestamp        '^ \[..:..:..\] '                     nextgroup=IrcNick,IrcWarning,IrcNotification
 syn match IrcNick             '\s\+<\S\+>\s'                        contains=IrcMyNick nextgroup=IrcMessage
 syn match IrcWarning          '\s\{,16}!!!\s'                       nextgroup=IrcMessage
-syn match IrcNotification     '\s\{,22}[^ !<].*'                    contained
+syn match IrcNotification     '\s\{,22}[^ !<].*'                    contained contains=IrcMentioned
 syn match IrcMessage          '.*$'                                 contained contains=IrcMentioned
 
-if exsits('g:irc_nick')
+if exists('g:irc_nick')
     exe "syn match IrcMentioned        '" . g:irc_nick . "'                  contained"
     exe "syn match IrcMyNick           '\\s*<" . g:irc_nick . ">\\s*'        contained"
 endif
