@@ -15,15 +15,14 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn match IrcTimestamp        '^ \[..:..:..\] '                     nextgroup=IrcNick,IrcWarning,IrcNotificationType
+syn match IrcTimestamp        '^ \[..:..:..\] '                     nextgroup=IrcNick,IrcWarning,IrcNotification
 syn match IrcNick             '\s\+<\S\+>\s'                        contains=IrcMyNick nextgroup=IrcMessage
 syn match IrcWarning          '\s\{,16}!!!\s'                       nextgroup=IrcMessage
-syn match IrcNotificationType '\(\s\{16}\)\|\(\s\{,16}[^ !<]\+\s\)' contained nextgroup=IrcNotification
-syn match IrcNotification     '.*$'                                 contained contains=IrcMentioned
+syn match IrcNotification     '\s\{,22}[^ !<].*'                    contained
 syn match IrcMessage          '.*$'                                 contained contains=IrcMentioned
 
-if exists('g:irc_nick')
-    exe "syn match IrcMentioned        '" . n . "'                           contained"
+if exsits('g:irc_nick')
+    exe "syn match IrcMentioned        '" . g:irc_nick . "'                  contained"
     exe "syn match IrcMyNick           '\\s*<" . g:irc_nick . ">\\s*'        contained"
 endif
 
